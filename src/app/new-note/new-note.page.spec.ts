@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewNotePage } from './new-note.page';
 
-describe('Tab1Page', () => {
+describe('NewNotePage', () => {
   let component: NewNotePage;
   let fixture: ComponentFixture<NewNotePage>;
 
