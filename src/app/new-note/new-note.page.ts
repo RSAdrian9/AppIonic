@@ -8,14 +8,14 @@ import { UIService } from '../services/ui.service';
 import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+  selector: 'app-new-note',
+  templateUrl: 'new-note.page.html',
+  styleUrls: ['new-note.page.scss'],
   standalone: true,
   imports: [IonicModule,
   FormsModule,ReactiveFormsModule],
 })
-export class Tab1Page {
+export class NewNotePage {
   public form!:FormGroup;
   private formB = inject(FormBuilder);
   private noteS = inject(NoteService);
