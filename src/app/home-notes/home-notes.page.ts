@@ -3,7 +3,7 @@ import { IonicModule, ModalController, Platform } from '@ionic/angular';
 import { NoteService } from '../services/note.service';
 import { Note } from '../model/note';
 import { CommonModule } from '@angular/common';
-import { AlertController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular/standalone';
 import { BehaviorSubject, Observable, from, map, mergeMap, tap, toArray } from 'rxjs';
 import { EditNoteModalComponent } from '../modal/modal.component';
 
@@ -13,7 +13,7 @@ import { EditNoteModalComponent } from '../modal/modal.component';
   templateUrl: 'home-notes.page.html',
   styleUrls: ['home-notes.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule]
+  imports: [IonicModule, CommonModule, EditNoteModalComponent],
 })
 export class HomeNotesPage {
   //public misnotas:Note[]=[];
@@ -21,8 +21,6 @@ export class HomeNotesPage {
   private lastNote:Note|undefined=undefined;
   private notesPerPage:number = 15;
   public isInfiniteScrollAvailable:boolean = true;
-
-
   public _editNote!:Note;
   public _deleteNote!:Note;
 
@@ -36,7 +34,9 @@ export class HomeNotesPage {
   }
   
 
-
+  editNoteSliding(note: Note) {
+    this.editNote(note);
+  }
 
   async editNote($event: Note) {
     this._editNote = $event;
