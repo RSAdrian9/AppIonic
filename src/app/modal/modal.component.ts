@@ -3,6 +3,7 @@ import { Note } from '../model/note';
 import { NoteService } from '../services/note.service';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-modal',
@@ -34,5 +35,37 @@ export class EditNoteModalComponent  implements OnInit {
 
   close() {
     this.modalController.dismiss();
+  }
+
+  public async takePic() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Uri
+    });
+
+    if (image.webPath) {
+      const base64Image = await this.convertToBase64(image.webPath);
+      this.note.img = base64Image;
+    } else {
+      console.error('No se pudo obtener el webPath de la imagen');
+    }
+    
+  }  private convertToBase64(webPath : string) {
+    return new Promise<string>((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+        const reader = new FileReader();
+        reader.onloadend = function() {
+          resolve(reader.result as string);
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.onerror = reject;
+      xhr.open('GET', webPath);
+      xhr.responseType = 'blob';
+      xhr.send();
+    });
   }
 }

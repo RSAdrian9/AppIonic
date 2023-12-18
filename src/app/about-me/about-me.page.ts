@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardTitle, IonCardSubtitle, IonCardContent, IonCardHeader, IonList, IonItem, IonLabel, IonChip, IonNote } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardTitle, IonCardSubtitle, IonCardContent, IonCardHeader, IonList, IonItem, IonLabel, IonChip, IonNote, IonIcon } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-about-me',
@@ -11,7 +10,6 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
            IonToolbar, 
            IonTitle, 
            IonContent, 
-           ExploreContainerComponent,
            IonCard,
            IonCardTitle,
            IonCardSubtitle,
@@ -21,7 +19,8 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
            IonItem,
            IonLabel,
            IonChip,
-           IonNote
+           IonNote,
+           IonIcon
           ],
 })
 export class AboutMePage {
